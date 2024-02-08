@@ -52,7 +52,7 @@ void max_Heapify(int arr[], int n, int i)
 }
 void deleteH(int arr[], int &n, int val){
     arr[0] = arr[n-1];
-    n = n-1;\
+    n = n-1;
     max_Heapify(arr,n,0);
 }
 
