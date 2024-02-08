@@ -51,8 +51,8 @@ void infixToPostfix(string s){
 		}
 	}
     while (!st.empty()) {
-    output += st.top();
-    st.pop();
+        output += st.top();
+        st.pop();
     }
     cout << output << endl;
 
