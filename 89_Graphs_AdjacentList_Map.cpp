@@ -9,9 +9,9 @@ template <typename T>
 
 class AdjList{
     public:
-        unordered_map<T, list<T>> adjList;
+        unordered_map<int, list<int>> adjList;
 
-        void addEdge(T u, T v, bool directed){
+        void addEdge(int u, int v, bool directed){
 
             // directed == 0 -> undirected graph and directed == 1 -> directed graph;
             adjList[u].push_back(v);
