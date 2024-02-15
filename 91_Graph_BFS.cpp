@@ -41,16 +41,6 @@ class Graph{
         return true;
     }
 
-    // void display(){
-    //     for(auto i : adjList){
-    //         cout << i.first << " -> ";
-    //         for(auto j : i.second){
-    //             cout << j << " ";
-    //         }
-    //         cout << endl;
-    //     }
-    // }
-
     void BFS(int vertex, unordered_map<int,bool> & visited){
         queue <int> queue;
 
