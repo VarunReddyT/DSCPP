@@ -41,7 +41,7 @@ bool checkSorted(queue<int> &queue, int n)
         }
     }
 
-    if (expected - 1== n && stack.empty())
+    if (expected - 1 == n && stack.empty())
     {
         return true;
     }

@@ -33,6 +33,7 @@ public:
     void DisplayRoot();
     int Height(Node *root);
     void secondMin(Node *);
+    void deleteB(Node*&root);
 };
 
 Node *BinaryTree::Create()
@@ -52,6 +53,17 @@ Node *BinaryTree::Create()
     return newnode;
 }
 
+void BinaryTree :: deleteB(Node * &root){
+    if(root == NULL){
+        return;
+    }
+    deleteB(root->left);
+    deleteB(root->right);
+
+    delete root;
+
+    // root = NULL;
+}
 
 void BinaryTree::DisplayRoot()
 {
@@ -137,6 +149,9 @@ void BinaryTree::printLevel(Node *root, int level){
 
 void BinaryTree::LevelOrderDisplay(Node *root)
 {
+    if(root == NULL){
+        return;
+    }
     int height = Height(root);
     for (int i = 0; i < height; i++)
     {
@@ -184,5 +199,10 @@ int main()
 
     bt.secondMin(bt.root);
     cout<<"Second Minimum : "<<bt.smin<<endl;
+
+    bt.deleteB(bt.root);
+    cout << "LevelOrderDisplay: ";
+    bt.LevelOrderDisplay(bt.root);
+    cout << endl;
     return 0;
 }
