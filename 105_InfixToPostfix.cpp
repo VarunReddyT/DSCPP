@@ -4,11 +4,11 @@ using namespace std;
 
 int prec(char c)
 {
-    if (c == '^')
-    {
-        return 3;
-    }
-    else if (c == '*' || c == '/')
+    // if (c == '^')
+    // {
+    //     return 3;
+    // }
+    if (c == '*' || c == '/')
     {
         return 2;
     }
