@@ -15,10 +15,8 @@ class LinkedList{ // Group of Nodes
     private:
         Node* head;
     public:
-        LinkedList(int data){
-            Node * n = new Node(data);
-            head = n;
-            n->next = NULL;
+        LinkedList(){
+            head = NULL;
         }
         void insertAtHead(int);
         void insertAtEnd(int);
@@ -113,7 +111,8 @@ void LinkedList :: deleteEnd(){
 
 int main()
 {
-    LinkedList LinkedList(10);  
+    LinkedList LinkedList;  
+    LinkedList.insertAtHead(10);
     LinkedList.insertAtHead(40);
     LinkedList.insertAtEnd(60);
     LinkedList.insertAtEnd(80);
