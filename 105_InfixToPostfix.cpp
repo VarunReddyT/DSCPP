@@ -19,11 +19,11 @@ int prec(char c)
     return -1;
 }
 
-char associativity(char c) {
-    if (c == '^')
-        return 'R';
-    return 'L'; 
-}
+// char associativity(char c) {
+//     if (c == '^')
+//         return 'R';
+//     return 'L'; 
+// }
 
 void infixToPostfix(string s)
 {
@@ -47,7 +47,11 @@ void infixToPostfix(string s)
             }
         }
         else{
-            while(!st.empty() && prec(s[i]) < prec(st.top()) || !st.empty() && prec(s[i]) == prec(st.top()) && associativity(s[i]) == 'L'){
+            // while(!st.empty() && prec(s[i]) < prec(st.top()) || !st.empty() && prec(s[i]) == prec(st.top()) && associativity(s[i]) == 'L'){
+            //     result += st.top();
+            //     st.pop();
+            // }
+            while(!st.empty() && prec(st.top()) > prec(s[i])){
                 result += st.top();
                 st.pop();
             }
@@ -64,7 +68,7 @@ void infixToPostfix(string s)
 
 int main()
 {
-    string s = "a+b*(c^d-e)^(f+g*h)-i";
+    string s = "a+b*(c+d-e)*(f+g*h)-i";
 
     infixToPostfix(s);
     return 0;
