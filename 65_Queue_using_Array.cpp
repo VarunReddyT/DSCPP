@@ -27,7 +27,7 @@ void Delete()
    {
       cout << "Element deleted from queue is : " << queue[front] << endl;
       front++;
-      ;
+      
    }
 }
 void Display()
