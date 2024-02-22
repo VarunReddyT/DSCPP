@@ -4,10 +4,10 @@ using namespace std;
 class Node{
     public:
         int val;
-        Node * link;
+        Node * next;
         Node(int data){
             val = data;
-            link = NULL;
+            next = NULL;
         }
 };
 
@@ -33,7 +33,7 @@ void Stack :: push(int val){
         return;
     }
 
-    temp->link = top;
+    temp->next = top;
     top = temp;
 }
 
@@ -43,7 +43,7 @@ void Stack :: pop(){
         cout << "Stack Underflow" << endl;
         return;
     }
-    top = temp->link;
+    top = temp->next;
 }
 
 int Stack :: peek(){
@@ -62,7 +62,7 @@ void Stack :: display(){
     }
     while(temp != NULL){
         cout << temp->val << endl;
-        temp = temp->link;
+        temp = temp->next;
     }
 }
 
