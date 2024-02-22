@@ -5,7 +5,7 @@
 #include<list>
 #include<vector>
 using namespace std;
-template <typename T>
+
 
 class AdjList{
     public:
@@ -39,7 +39,7 @@ int main()
     cout << "Enter the number of edges : ";
     cin >> edges;
 
-    AdjList<int> adj;
+    AdjList adj;
 
     int v1,v2;
 

@@ -7,7 +7,6 @@ using namespace std;
 
 class Graph{
     public:
-    vector<int> vertices;
     unordered_map<int, list<int> > adjList;
 
     void add_edge(int v1, int v2){
