@@ -1,14 +1,12 @@
-// Middle Term of the linked list
-
 #include<iostream>
 using namespace std;
 
 class Node{
     public:
-        int data;
+        int val;
         Node* next;
         Node(int data){
-            this->data = data;
+            this->val = data;
             this->next = NULL;
         }
 };
@@ -31,28 +29,16 @@ class LinkedList{
             }
             temp->next = newNode;
         }
-        int length(){
-            Node * temp = head;
-            int i = 0;
-            while(temp != NULL){
-                i++;    
-                temp = temp->next;
-            }
-            return i;
-        }
-
         int middleNode(){
-            Node * temp = head;
-            int i = length();
-            // Return 2nd term from the two middle terms if length is odd
-            int j = (i/2)+1;
-            cout << j<< endl;
-            int k = 1;
-            while(k<j){
-                k++;
-                temp = temp->next;
+            Node * slow = head;
+            Node * fast = head;
+
+            while(fast && fast->next){
+                slow = slow->next;
+                fast = fast->next->next;
             }
-            return temp->data;
+
+            return slow->val;
         }
 };
 int main()
