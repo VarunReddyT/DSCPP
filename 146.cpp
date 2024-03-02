@@ -22,21 +22,7 @@ class BinaryTree{
         BinaryTree(){
             root = NULL;
         }
-        void leftTree(Node * root){
-            if(root == NULL){
-                return;
-            }
-            cout << root->val << " ";
-            leftTree(root->left);
-        }
-
-        void rightTree(Node * root){
-            if(root == NULL){
-                return;
-            }
-            cout << root->val << " ";
-            rightTree(root->right);
-        }
+        
 
         Node * create(Node * root){
             int data;
@@ -62,10 +48,6 @@ int main()
     cout << "Enter root : ";
     bt.root = bt.create(bt.root);
 
-    cout << "Left View of Tree :" << endl;
-    bt.leftTree(bt.root);
-    cout << endl;
-    cout << "Right View of Tree :" << endl;
-    bt.rightTree(bt.root);
+    
     return 0;
 }
