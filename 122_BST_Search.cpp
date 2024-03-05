@@ -191,6 +191,7 @@ void BinarySearchTree :: search(Node * root, int data){
         }
         else if(temp->data > data){
             temp = temp->left;
+            
         }
         else{
             temp = temp->right;
