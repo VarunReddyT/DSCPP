@@ -1,6 +1,7 @@
 #include<iostream>
 #include<vector>
 #include<queue>
+#include<map>
 using namespace std;
 
 class Node{
@@ -75,6 +76,11 @@ class BinaryTree{
             }
             return -1;
         }
+        // void createMapping(int inorder[],map<int,int>&nodeToIndex, int n){
+        //     for(int i = 0; i<n; i++){
+        //         nodeToIndex[inorder[i]] = i; 
+        //     }
+        // }
         Node * solve(int inorder[],int preorder[],int &index, int inorderStart, int inorderEnd, int n){
             if(index >= n || inorderStart > inorderEnd){
                 return NULL;
@@ -82,7 +88,7 @@ class BinaryTree{
             int element = preorder[index++];
             Node * root = new Node(element);
             int pos = findPos(inorder,element,n);
-
+            // int pos = nodeToIndex[element];
             root->left = solve(inorder,preorder,index,inorderStart,pos-1,n);
             root->right = solve(inorder,preorder,index,pos+1,inorderEnd,n);
             return root;    
@@ -90,6 +96,7 @@ class BinaryTree{
         }
         Node * buildTree(int inorder[],int preorder[],int n){
             int preOrderIndex = 0; // Root index
+            // map<int,int> nodeToIndex;
             Node * res = solve(inorder,preorder,preOrderIndex,0,n-1,n);
         }
 };
