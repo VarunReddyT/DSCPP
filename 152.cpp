@@ -68,47 +68,38 @@ class BinaryTree{
                 cout << endl;
             }
         }
-        int findPos(int inorder[], int element, int n){
+        void createMapping(int inorder[],map<int,int>&nodeToIndex, int n){
             for(int i = 0; i<n; i++){
-                if(inorder[i] == element){
-                    return i;
-                }
+                nodeToIndex[inorder[i]] = i; 
             }
-            return -1;
         }
-        // void createMapping(int inorder[],map<int,int>&nodeToIndex, int n){
-        //     for(int i = 0; i<n; i++){
-        //         nodeToIndex[inorder[i]] = i; 
-        //     }
-        // }
-        Node * solve(int inorder[],int preorder[],int &index, int inorderStart, int inorderEnd, int n){
-            if(index >= n || inorderStart > inorderEnd){
+        Node * solve(int inorder[],int postorder[],int &index, int inorderStart, int inorderEnd, int n, map<int,int> nodeToIndex){
+            if(index < 0 || inorderStart > inorderEnd){
                 return NULL;
             }
-            int element = preorder[index++];
+            int element = postorder[index--];
             Node * root = new Node(element);
-            int pos = findPos(inorder,element,n);
-            // int pos = nodeToIndex[element];
-            root->left = solve(inorder,preorder,index,inorderStart,pos-1,n);
-            root->right = solve(inorder,preorder,index,pos+1,inorderEnd,n);
+            int pos = nodeToIndex[element];
+            root->left = solve(inorder,postorder,index,inorderStart,pos-1,n,nodeToIndex);
+            root->right = solve(inorder,postorder,index,pos+1,inorderEnd,n,nodeToIndex);
             return root;    
 
         }
-        Node * buildTree(int inorder[],int preorder[],int n){
-            int preOrderIndex = 0; // Root index
-            // map<int,int> nodeToIndex;
-            Node * res = solve(inorder,preorder,preOrderIndex,0,n-1,n);
-            return res;
+        Node * buildTree(int inorder[],int postorder[],int n){
+            int postOrderIndex = n-1; // Root index
+            map<int,int> nodeToIndex;
+            createMapping(inorder,nodeToIndex,n);
+            Node * res = solve(inorder,postorder,postOrderIndex,0,n-1,n,nodeToIndex);
         }
 };
 
 int main()
 {
     BinaryTree bt;
-    int inorder[] = {3,1,4,0,5,2};
-    int preorder[] = {0,1,3,4,2,5};
-    int n = 6;
-    bt.root = bt.buildTree(inorder,preorder,n);
+    int inorder[] = {4,8,2,5,1,6,3,7};
+    int postorder[] = {8,4,5,2,6,7,3,1};
+    int n = 8;
+    bt.root = bt.buildTree(inorder,postorder,n);
 
     bt.levelOrderDisplay(bt.root);
     return 0;
