@@ -105,9 +105,9 @@ class BinaryTree{
 int main()
 {
     BinaryTree bt;
-    int inorder[] = {3,1,4,0,5,2};
-    int preorder[] = {0,1,3,4,2,5};
-    int n = 6;
+    int inorder[] = {9,3,15,20,7};
+    int preorder[] = {3,9,20,15,7};
+    int n = 5;
     bt.root = bt.buildTree(inorder,preorder,n);
 
     bt.levelOrderDisplay(bt.root);
