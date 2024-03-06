@@ -80,8 +80,9 @@ class BinaryTree{
             int element = postorder[index--];
             Node * root = new Node(element);
             int pos = nodeToIndex[element];
-            root->left = solve(inorder,postorder,index,inorderStart,pos-1,n,nodeToIndex);
+            // In this part, right side call must be done first
             root->right = solve(inorder,postorder,index,pos+1,inorderEnd,n,nodeToIndex);
+            root->left = solve(inorder,postorder,index,inorderStart,pos-1,n,nodeToIndex);
             return root;    
 
         }
@@ -90,6 +91,7 @@ class BinaryTree{
             map<int,int> nodeToIndex;
             createMapping(inorder,nodeToIndex,n);
             Node * res = solve(inorder,postorder,postOrderIndex,0,n-1,n,nodeToIndex);
+            return res;
         }
 };
 
