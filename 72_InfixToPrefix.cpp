@@ -28,9 +28,7 @@ int prec(char c)
 
 string infixToPrefix(string s)
 {
-    reverse(s.begin(), s.end());
-    ;
-    
+    reverse(s.begin(), s.end());    
     stack<char> st;
     string res;
 
